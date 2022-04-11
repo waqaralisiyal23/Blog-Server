@@ -1,7 +1,7 @@
 const express = require('express');             // Import expressjs
 const mongoose = require('mongoose');           // Import mongoose
 
-const Port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const app = express();                       // Create expressjs object
 
 // Connect MongoDb
@@ -19,4 +19,4 @@ const userRoute = require('./routes/user');
 app.use('/user', userRoute);
 
 app.route('/').get((req, res) => res.json('Hello World!'));
-app.listen(Port, () => console.log(`Your server is running on port ${Port}`));
+app.listen(port, () => console.log(`Your server is running on port ${port}`));
