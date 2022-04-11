@@ -1,7 +1,7 @@
 const express = require('express');             // Import expressjs
 const mongoose = require('mongoose');           // Import mongoose
 
-const Port = process.env.port || 3000;
+const Port = process.env.PORT || 3000;
 const app = express();                       // Create expressjs object
 
 // Connect MongoDb
