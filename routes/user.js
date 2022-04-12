@@ -67,7 +67,15 @@ router.route('/register').post((req, res) => {
         email: req.body.email,
     });
     user.save().then(() => {
-        res.status(200).json('ok');
+        let token = jwt.sign(
+            { username: req.body.username },
+            config.key,
+            { expiresIn: "24h" },       // Expire in 24 hours
+        );
+        res.json({
+            token: token,
+            msg: 'success',
+        });
     }).catch((err) => {
         res.status(403).json({ msg: err });
     });
