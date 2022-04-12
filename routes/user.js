@@ -40,7 +40,7 @@ router.route('/login').post((req, res) => {
         (err, result) => {
             if (err) return res.status(500).json({ msg: err });
             if (result === null) {
-                return res.status(403).json('Incorrect Username');
+                return res.status(403).json({ msg: 'Incorrect Username' });
             }
             if (result.password === req.body.password) {
                 // here we implement the JWT token
@@ -54,7 +54,7 @@ router.route('/login').post((req, res) => {
                     msg: 'success',
                 });
             } else {
-                res.status(403).json('Incorrect Password');
+                res.status(403).json({ msg: 'Incorrect Password' });
             }
         }
     );
