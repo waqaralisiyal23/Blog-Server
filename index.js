@@ -15,8 +15,12 @@ connection.once('open', () => {
 
 // middleware
 app.use(express.json())
+// User Route
 const userRoute = require('./routes/user');
 app.use('/user', userRoute);
+// Profile Route
+const profileRoute = require('./routes/profile');
+app.use('/profile', profileRoute);
 
 app.route('/').get((req, res) => res.json('Hello World!'));
 app.listen(port, () => console.log(`Your server is running on port ${port}`));
