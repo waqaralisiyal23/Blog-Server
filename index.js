@@ -14,13 +14,20 @@ connection.once('open', () => {
 });
 
 // middleware
-app.use(express.json())
+app.use('/uploads', express.static('uploads'));   // Make uploads folder to make it accessible from browser
+app.use(express.json());    // For Json Data
 // User Route
 const userRoute = require('./routes/user');
 app.use('/user', userRoute);
 // Profile Route
 const profileRoute = require('./routes/profile');
 app.use('/profile', profileRoute);
+// Blog Route
+const blogRoute = require('./routes/blogpost');
+app.use('/blogPost', blogRoute);
 
 app.route('/').get((req, res) => res.json('Hello World!'));
-app.listen(port, () => console.log(`Your server is running on port ${port}`));
+// app.listen(port, () => console.log(`Your server is running on port ${port}`));
+
+// Added 0.0.0.0 to run server from local ip address
+app.listen(port, '0.0.0.0', () => console.log(`Your server is running on port ${port}`));

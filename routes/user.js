@@ -47,7 +47,7 @@ router.route('/login').post((req, res) => {
                 let token = jwt.sign(
                     { username: req.body.username },
                     config.key,
-                    { expiresIn: "24h" },       // Expire in 24 hours
+                    {},
                 );
                 res.json({
                     token: token,
@@ -70,7 +70,7 @@ router.route('/register').post((req, res) => {
         let token = jwt.sign(
             { username: req.body.username },
             config.key,
-            { expiresIn: "24h" },       // Expire in 24 hours
+            {},
         );
         res.json({
             token: token,
